@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 
-const guests = [
+const rooms = [
   {
     value: "1",
     label: "1",
@@ -22,11 +22,11 @@ const guests = [
   },
 ];
 
-const CustomDropdownInput = ({ label }) => {
-  const [guest, setguest] = React.useState("EUR");
+const CustomDropDownRoom = ({ label }) => {
+  const [room, setroom] = React.useState("EUR");
 
   const handleChange = (event) => {
-    setguest(event.target.value);
+    setroom(event.target.value);
   };
 
   return (
@@ -34,21 +34,21 @@ const CustomDropdownInput = ({ label }) => {
       component="form"
       sx={{
         "& .MuiTextField-root": { m: 1, width: "35ch" },
-        // marginTop: 1,
+        marginTop: 1,
       }}
       noValidate
       autoComplete="off"
     >
       <div>
         <TextField
-          id="outlined-select-guest"
+          id="outlined-select-room"
           select
           label="Select"
-          value={guest}
+          value={room}
           onChange={handleChange}
-          helperText="Please select no of guest"
+          helperText="Please select no of room"
         >
-          {guests.map((option) => (
+          {rooms.map((option) => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}
             </MenuItem>
@@ -58,4 +58,4 @@ const CustomDropdownInput = ({ label }) => {
     </Box>
   );
 };
-export default CustomDropdownInput;
+export default CustomDropDownRoom;

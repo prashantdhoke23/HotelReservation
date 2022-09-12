@@ -19,7 +19,7 @@ const CustomDatePicker = () => {
     <Box
       component="form"
       sx={{
-        "& .MuiTextField-root": { m: 1, width: "70ch" },
+        "& .MuiTextField-root": { m: 1, width: "35ch" },
         marginTop: 1,
       }}
       noValidate
@@ -28,7 +28,7 @@ const CustomDatePicker = () => {
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <Stack spacing={4}>
           <DesktopDatePicker
-            label="Date desktop"
+            label="Check-in"
             inputFormat="MM/DD/YYYY"
             value={value}
             onChange={handleChange}
