@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Text } from "react";
+import image from '../components/image/back-img.jpg'; 
 
 const BookingDetailsPage = () => {
   const formSelector = useSelector((state) => state.bookingFormReducer);
@@ -15,6 +16,7 @@ const BookingDetailsPage = () => {
         justifyContent: "center",
         display: "flex",
         backgroundColor: "#dedada",
+        backgroundImage:`url(${image})`
       }}
     >
       <Box
@@ -25,10 +27,10 @@ const BookingDetailsPage = () => {
         sx={{ p: "10", margin: 20 }}
       >
         <div style={{ margin: 20 }}>
-          <h1>Receipt</h1>
+          <h1>Booking Confirmed</h1>
           <div className="fieldContainer">
             <div style={{ flex: 1 }}>
-              <h3>User Name</h3>
+              <h3>Name</h3>
               <h3>Email</h3>
               <h3>Number of Guest</h3>
               <h3>Check In Date</h3>

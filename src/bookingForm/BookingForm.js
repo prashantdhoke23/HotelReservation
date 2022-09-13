@@ -16,6 +16,10 @@ import CustomDatePicker from "../components/CustomDatePicker";
 import CustomSubmitButton from "../components/CustomSubmitButton";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
+import image from '../components/image/back-img.jpg'; 
+import { width } from "@mui/system";
+import { WidthFull } from "@mui/icons-material";
+import { Box } from "@mui/material";
 
 const BookingForm = () => {
   const dispatch = useDispatch();
@@ -67,9 +71,33 @@ const BookingForm = () => {
   };
 
   return (
+   
     <React.Fragment>
+      <div
+      style={{
+        height: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+        display: "flex",
+        backgroundColor: "#dedada",
+        backgroundImage:`url(${image})`
+      }}
+    >
+      <Box
+        color="gray"
+        bgcolor="white"
+        mt={2}
+        borderRadius="1%"
+        sx={{ p: "10", margin: 20 }}
+      >
+
+  
+       
       <CssBaseline />
-      <form onSubmit={handleSubmit}>
+      
+      <form onSubmit={handleSubmit} class="form-horizontal">
+        <h1>Online Hotel Reservation</h1>
+
         <Container maxWidth="sm">
           <CustomTextInput
             name={"name"}
@@ -133,6 +161,9 @@ const BookingForm = () => {
           </button>
         </Container>
       </form>
+      </Box>
+      </div>
+      
     </React.Fragment>
   );
 };

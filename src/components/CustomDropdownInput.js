@@ -27,7 +27,7 @@ const CustomDropdownInput = ({ label, handleChange, roomtype,name }) => {
     <Box
       component="form"
       sx={{
-        "& .MuiTextField-root": { m: 1, width: "70ch" },
+        "& .MuiTextField-root": { m: 1, width: "50ch" },
         marginTop: 1,
       }}
       noValidate
