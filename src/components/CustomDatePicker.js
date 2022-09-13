@@ -1,25 +1,22 @@
 import * as React from "react";
-import dayjs from "dayjs";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
-import moment from "moment";
 import Box from "@mui/material/Box";
 
-const CustomDatePicker = () => {
-  const [value, setValue] = React.useState(dayjs(moment().format()));
-
-  const handleChange = (newValue) => {
-    setValue(newValue);
-  };
+const CustomDatePicker = ({ lable, handleChange, date }) => {
+  // const handleChange = (newValue) => {
+  //   setValue(newValue);
+  //   console.log("Selected Date " + newValue);
+  // };
 
   return (
     <Box
       component="form"
       sx={{
-        "& .MuiTextField-root": { m: 1, width: "35ch" },
+        "& .MuiTextField-root": { m: 1, width: "70ch" },
         marginTop: 1,
       }}
       noValidate
@@ -28,9 +25,9 @@ const CustomDatePicker = () => {
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <Stack spacing={4}>
           <DesktopDatePicker
-            label="Check-in"
+            label={lable}
             inputFormat="MM/DD/YYYY"
-            value={value}
+            value={date}
             onChange={handleChange}
             renderInput={(params) => <TextField {...params} />}
           />

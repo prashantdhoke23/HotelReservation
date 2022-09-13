@@ -3,52 +3,47 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 
-const guests = [
+const currencies = [
   {
-    value: "1",
-    label: "1",
+    value: "standard",
+    label: "Standard",
   },
   {
-    value: "2",
-    label: "2",
+    value: "private",
+    label: "Private",
   },
   {
-    value: "3",
-    label: "3",
-  },
-  {
-    value: "4",
-    label: "4",
+    value: "dorm",
+    label: "Dorm",
   },
 ];
 
-const CustomDropdownInput = ({ label }) => {
-  const [guest, setguest] = React.useState("EUR");
-
-  const handleChange = (event) => {
-    setguest(event.target.value);
-  };
+const CustomDropdownInput = ({ label, handleChange, roomtype,name }) => {
+  // const handleChange = (event) => {
+  //   setCurrency(event.target.value);
+  // };
 
   return (
     <Box
       component="form"
       sx={{
-        "& .MuiTextField-root": { m: 1, width: "35ch" },
-        // marginTop: 1,
+        "& .MuiTextField-root": { m: 1, width: "70ch" },
+        marginTop: 1,
       }}
       noValidate
       autoComplete="off"
     >
       <div>
         <TextField
-          id="outlined-select-guest"
+          id="outlined-select-currency"
           select
-          label="Select"
-          value={guest}
+          name={name}
+          label={label}
+          value={roomtype}
           onChange={handleChange}
-          helperText="Please select no of guest"
+          helperText="Please select your Room Type"
         >
-          {guests.map((option) => (
+          {currencies.map((option) => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}
             </MenuItem>

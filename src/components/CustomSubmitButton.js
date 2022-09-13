@@ -1,9 +1,9 @@
 import * as React from "react";
-import Stack from "@mui/material/Stack";
+import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 
-const CustomSubmitButton = () => {
+const CustomSubmitButton = (onSubmit) => {
   return (
     <Box
       component="form"
@@ -14,9 +14,14 @@ const CustomSubmitButton = () => {
       noValidate
       autoComplete="off"
     >
+      {/* <Link to="bookingDetails">
+       
+      </Link> */}
       <Button
         sx={{ width: "70ch", alignSelf: "center", m: 1, marginLeft: 5 }}
         variant="contained"
+        onClick={() => {
+        }}
       >
         Submit
       </Button>
