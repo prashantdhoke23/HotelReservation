@@ -38,7 +38,7 @@ const BookingForm = () => {
 
   const submitData = () => {
     if (isSubmit) {
-     // navigate("bookingDetails");
+      navigate("bookingDetails");
     }
   };
 
