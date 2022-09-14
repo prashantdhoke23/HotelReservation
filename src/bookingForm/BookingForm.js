@@ -101,7 +101,7 @@ const BookingForm = () => {
        
       <CssBaseline />
       
-      <form onSubmit={handleSubmit} class="form-horizontal">
+      <form data-testid="form" onSubmit={handleSubmit} className="form-horizontal">
         <h1>Online Hotel Reservation</h1>
 
         <Container maxWidth="sm">
