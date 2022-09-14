@@ -124,51 +124,53 @@ test("date input field should accept date",()=> {
   expect(date.value).toMatch("09/29/2022");
   expect(date.value).not.toMatch("3");
 }); 
-test("roomtype input field should accept roomtype",()=> {
-  render(
-    <BrowserRouter>
-    <Provider store={store}>
-      <BookingForm />
-    </Provider>
-  </BrowserRouter>
-  );
-  const roomTypes=screen.getByPlaceholderText("rooms")
-  const testroomType="private";
-  //userEvent.type(screen.getByLabelText(roomType,testroomType));
- userEvent.type(roomTypes,testroomType);
- console.log(roomTypes.value);
-  expect(roomTypes.value).toMatch("private");
-  expect(roomTypes.value).not.toMatch("dorm");
-}); 
-// test("should be able to submit the form",()=>{
+// test("roomtype input field should accept roomtype",()=> {
 //   render(
 //     <BrowserRouter>
 //     <Provider store={store}>
 //       <BookingForm />
-//       <BookingDetailsPage />
 //     </Provider>
 //   </BrowserRouter>
 //   );
-//   const submitBtn=screen.getByPlaceholderText("submit");
-//   const nameInput=screen.getByLabelText("First Name");
-//   const emailInput=screen.getByLabelText("Email Id");
-//   const roomTypeInput=screen.getByLabelText("Select Room Type");
-//   const noofGuestInput=screen.getByLabelText("Number Of Guest");
-//   const dateInput=screen.getByLabelText("Selected Date");
+//   const roomTypes=screen.getByPlaceholderText("rooms")
+//   const testroomType="private";
+//   //userEvent.type(screen.getByLabelText(roomType,testroomType));
+//  userEvent.type(roomTypes,testroomType);
+//  console.log(roomTypes.value);
+//   expect(roomTypes.value).toMatch("private");
+//   expect(roomTypes.value).not.toMatch("dorm");
+// }); 
+test("should be able to submit the form",()=>{
+  render(
+    <BrowserRouter>
+    <Provider store={store}>
+      <BookingForm />
+      <BookingDetailsPage />
+    </Provider>
+  </BrowserRouter>
+  );
+  const submitBtn=screen.getByPlaceholderText("submit");
+  const nameInput=screen.getByLabelText("First Name");
+  const emailInput=screen.getByLabelText("Email Id");
+  const roomTypeInput=screen.getByLabelText("Select Room Type");
+  const noofGuestInput=screen.getByLabelText("Number Of Guest");
+  const dateInput=screen.getByLabelText("Selected Date");
 
-//   userEvent.type(nameInput,"Prashant");
-//   userEvent.type(emailInput,"prashant23@gmail.com");
-//   userEvent.type(roomTypeInput,"Private");
-//   userEvent.type(noofGuestInput,"2");
-//   userEvent.type(dateInput,"09/29/2022");
+  userEvent.type(nameInput,"Prashant");
+  userEvent.type(emailInput,"prashant23@gmail.com");
+  userEvent.type(roomTypeInput,"Private");
+  userEvent.type(noofGuestInput,"2");
+  userEvent.type(dateInput,"09/29/2022");
   
 
-//   userEvent.click(submitBtn);
-//   const userInfo=screen.getByText("prashant23@gmail.com");
-//   expect(userInfo).toBeInTheDocument();
+  userEvent.click(submitBtn);
+  const mockedUsedNavigate = jest.fn();
+  jest.mock("react-router-dom", () => ({
+    ...jest.requireActual("react-router-dom"),
+    useNavigate: () => mockedUsedNavigate,
 
-
-// })
+  }));
+})
 
 
 // test("onSubmit to have been called", async () => {
@@ -203,4 +205,4 @@ test("navigation test", async () => {
     useNavigate: () => mockedUsedNavigate,
   }));
  });
-}
+});

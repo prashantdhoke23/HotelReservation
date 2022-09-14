@@ -4,6 +4,7 @@ import store from "../store/store";
 import { BrowserRouter } from "react-router-dom";
 import BookingDetailsPage from "./BookingDetailsPage";
 
+describe("Test the Booking Form Details Component", () => {
 test("Booking Details Lable and heading",async  () => {
   render(
     <BrowserRouter>
@@ -39,3 +40,5 @@ test("Booking Details ",async  () => {
     expect(screen.getByText("Check In Date")).toBeInTheDocument();
     expect(screen.getByText("Room Type")).toBeInTheDocument();
   });
+
+});
