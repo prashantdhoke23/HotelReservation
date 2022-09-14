@@ -20,7 +20,6 @@ import image from '../components/image/back-img.jpg';
 import { width } from "@mui/system";
 import { WidthFull } from "@mui/icons-material";
 import { Box } from "@mui/material";
-import { Alert } from "react-bootstrap";
 
 const BookingForm = () => {
   const dispatch = useDispatch();
