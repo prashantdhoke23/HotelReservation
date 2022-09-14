@@ -1,9 +1,11 @@
-import { getByTestId, render, screen } from "@testing-library/react";
+import { getByTestId, render, screen, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
 import BookingForm from "./BookingForm";
 import store from "../store/store";
 import { BrowserRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
+import { fireEvent } from "@testing-library/react";
+import { useNavigate } from "react-router-dom";
 
 test("Form field lable", () => {
   render(
@@ -19,7 +21,6 @@ test("Form field lable", () => {
   expect(email).toBeInTheDocument();
   const roomtype = screen.getByLabelText("Select Room Type");
   expect(roomtype).toBeInTheDocument();
-  // expect(roomtype).toHaveValue("standard");
   const guestnumber = screen.getByLabelText("Number Of Guest");
   expect(guestnumber).toBeInTheDocument();
   const selecteddate = screen.getByLabelText("Selected Date");
@@ -61,7 +62,25 @@ test("render email input", async () => {
   expect(inputEl).toHaveValue("test@gmail.com");
 });
 
-test("Selected Room Type", async () => {
+// test("onSubmit to have been called", async () => {
+//   // const data = { title: 'Hello', gameType: 'Catan', diceNumber: '2' };
+//   const mock = jest.fn();
+//   const { getByText } = render(
+//     <BrowserRouter>
+//       <Provider store={store}>
+//         <BookingForm />
+//       </Provider>
+//     </BrowserRouter>
+//   );
+//   // Arrange
+//   const form = waitFor(() => getByText("Submit Data"));
+//   // Act
+//   // Assert
+//    fireEvent.submit(form);
+//   expect(mock).toHaveBeenCalled();
+// });
+
+test("navigation test", async () => {
   render(
     <BrowserRouter>
       <Provider store={store}>
@@ -69,7 +88,9 @@ test("Selected Room Type", async () => {
       </Provider>
     </BrowserRouter>
   );
-  const selectoption = screen.getByLabelText("Select Room Type");
-  userEvent.selectOptions(selectoption, "standard");
-  expect(selectoption).toHaveValue("standard");
+  const mockedUsedNavigate = jest.fn();
+  jest.mock("react-router-dom", () => ({
+    ...jest.requireActual("react-router-dom"),
+    useNavigate: () => mockedUsedNavigate,
+  }));
 });
