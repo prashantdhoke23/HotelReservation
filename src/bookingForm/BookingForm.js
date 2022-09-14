@@ -120,6 +120,7 @@ const BookingForm = () => {
           <CustomTextInput
             name={"email"}
             value={formValues.email}
+            placeholder="Enter email"
             onValueChanged={(e) => {
               const { name, value } = e.target;
               setFormValues({ ...formValues, [name]: value });
@@ -133,6 +134,7 @@ const BookingForm = () => {
             name={"roomtype"}
             roomtype={roomtypestate}
             label={"Select Room Type"}
+            
             handleChange={(e) => {
               setroomTypeState(e.target.value);
               const { name, roomtypestate } = e.target.value;
