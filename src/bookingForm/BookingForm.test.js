@@ -5,6 +5,7 @@ import store from "../store/store";
 import { BrowserRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 // import { render, screen } from '@testing-library/react';
+import BookingDetailsPage from "./BookingDetailsPage";
 
 describe("Test the Booking Form Component", () => {
   test("header renders with react testing in the document", () => {
@@ -108,5 +109,64 @@ test("guestno input field should accept guestno",()=> {
   expect(guestno.value).toMatch("2");
   expect(guestno.value).not.toMatch("3");
 }); 
+test("date input field should accept date",()=> {
+  render(
+    <BrowserRouter>
+    <Provider store={store}>
+      <BookingForm />
+    </Provider>
+  </BrowserRouter>
+  );
+  const date=screen.getByLabelText("Selected Date")
+  const testDate="09/29/2022";
+  userEvent.type(date,testDate);
+  expect(date.value).toMatch("09/29/2022");
+  expect(date.value).not.toMatch("3");
+}); 
+test("roomtype input field should accept roomtype",()=> {
+  render(
+    <BrowserRouter>
+    <Provider store={store}>
+      <BookingForm />
+    </Provider>
+  </BrowserRouter>
+  );
+  const roomTypes=screen.getByPlaceholderText("rooms")
+  const testroomType="private";
+  //userEvent.type(screen.getByLabelText(roomType,testroomType));
+ userEvent.type(roomTypes,testroomType);
+ console.log(roomTypes.value);
+  expect(roomTypes.value).toMatch("private");
+  expect(roomTypes.value).not.toMatch("dorm");
+}); 
+// test("should be able to submit the form",()=>{
+//   render(
+//     <BrowserRouter>
+//     <Provider store={store}>
+//       <BookingForm />
+//       <BookingDetailsPage />
+//     </Provider>
+//   </BrowserRouter>
+//   );
+//   const submitBtn=screen.getByPlaceholderText("submit");
+//   const nameInput=screen.getByLabelText("First Name");
+//   const emailInput=screen.getByLabelText("Email Id");
+//   const roomTypeInput=screen.getByLabelText("Select Room Type");
+//   const noofGuestInput=screen.getByLabelText("Number Of Guest");
+//   const dateInput=screen.getByLabelText("Selected Date");
+
+//   userEvent.type(nameInput,"Prashant");
+//   userEvent.type(emailInput,"prashant23@gmail.com");
+//   userEvent.type(roomTypeInput,"Private");
+//   userEvent.type(noofGuestInput,"2");
+//   userEvent.type(dateInput,"09/29/2022");
+  
+
+//   userEvent.click(submitBtn);
+//   const userInfo=screen.getByText("prashant23@gmail.com");
+//   expect(userInfo).toBeInTheDocument();
+
+
+// })
 
 });

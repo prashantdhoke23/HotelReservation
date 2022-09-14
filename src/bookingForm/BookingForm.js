@@ -131,6 +131,7 @@ const BookingForm = () => {
           <p>{formErrors.email}</p>
           <CustomDropdownInput
             name={"roomtype"}
+            placeholder="rooms"
             roomtype={roomtypestate}
             label={"Select Room Type"}
             
@@ -162,7 +163,7 @@ const BookingForm = () => {
               dispatch(addCheckInDate(date.toLocaleDateString()));
             }}
           />
-          <button
+          <button placeholder="submit"
             style={{ padding: 10, color: "white", backgroundColor: "#2020cf" }}
             onClick={submitData}
           >
