@@ -20,6 +20,7 @@ import image from '../components/image/back-img.jpg';
 import { width } from "@mui/system";
 import { WidthFull } from "@mui/icons-material";
 import { Box } from "@mui/material";
+import { Alert } from "react-bootstrap";
 
 const BookingForm = () => {
   const dispatch = useDispatch();
@@ -29,13 +30,17 @@ const BookingForm = () => {
   const [isSubmit, setIsSubmit] = useState(false);
   const [roomtypestate, setroomTypeState] = useState("Room Type");
   const [date, setDate] = useState("");
+  const [error, setError] = useState("");
+  const [showUser, setShowUser] = useState(false);
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
     }
   }, [formErrors]);
 
   const handleSubmit = (e) => {
+    setShowUser(false);
     e.preventDefault();
     setFormErrors(validate(formValues));
   };
@@ -51,7 +56,8 @@ const BookingForm = () => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     if (!values.name) {
       errors.name = "name is required!";
-    } else if (!values.email) {
+    } 
+    else if (!values.email) {
       errors.email = "Email is required!";
     } else if (!regex.test(values.email)) {
       errors.email = "This is not a valid email format!";
@@ -73,6 +79,7 @@ const BookingForm = () => {
   return (
    
     <React.Fragment>
+       
       <div
       style={{
         height: "100%",
@@ -117,6 +124,7 @@ const BookingForm = () => {
               const { name, value } = e.target;
               setFormValues({ ...formValues, [name]: value });
               dispatch(addEmail(e.target.value));
+              //setEmail(e.target.value)
             }}
             label={"Email Id"}
           />
@@ -167,5 +175,4 @@ const BookingForm = () => {
     </React.Fragment>
   );
 };
-
 export default BookingForm;
